@@ -1498,7 +1498,7 @@ setup_arx_node() {
         log "生成 node-keypair.json..."
         log "生成 node-keypair.json..."
         echo "DEBUG: 开始生成 node-keypair.json" >&2
-        if ! solana-keygen new --outfile node-keypair.json --no-bip39-passphrase --silent --force; then
+        if ! solana-keygen new --outfile node-keypair.json --no-bip39-passphrase; then
             error "生成 node-keypair.json 失败"
             return 1
         fi
@@ -1506,7 +1506,7 @@ setup_arx_node() {
 
         log "生成 callback-kp.json..." 
         echo "DEBUG: 开始生成 callback-kp.json" >&2
-        if ! solana-keygen new --outfile callback-kp.json --no-bip39-passphrase --silent --force; then
+        if ! solana-keygen new --outfile callback-kp.json --no-bip39-passphrase; then
             error "生成 callback-kp.json 失败"
             return 1
         fi
