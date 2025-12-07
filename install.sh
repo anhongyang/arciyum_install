@@ -1521,14 +1521,13 @@ setup_arx_node() {
         echo "DEBUG: identity.pem 生成完成" >&2
         
         # 生成 BLS 密钥对（v0.5.1 必需）
-        # 注意：BLS 密钥对需要使用 Solana 格式的密钥对
-        # 根据错误信息，BLS 密钥对需要能够转换为 32 字节数组
-        # 使用 node-keypair.json 作为 BLS 密钥对（Solana JSON 格式包含私钥数组）
-        log "创建 BLS 密钥对（使用 node-keypair.json 格式）..."
-        echo "DEBUG: 使用 node-keypair.json 作为 BLS 密钥对" >&2
-        # 直接复制 node-keypair.json 作为 bls-keypair.json
-        # 因为 Solana JSON 格式的密钥对包含私钥数组，应该可以满足 BLS 的要求
-        cp node-keypair.json bls-keypair.json
+        log "创建 BLS 密钥对（）..."
+        #echo "DEBUG: 使用 node-keypair.json 作为 BLS 密钥对" >&2
+        
+        if ! arcium gen-bls-key bls-keypair.json; then
+            error "生成 bls-keypair.json 失败"
+            return 1
+        fi
         echo "DEBUG: bls-keypair.json 创建完成" >&2
         success "BLS 密钥对创建完成（使用 node-keypair.json 格式）"
         
