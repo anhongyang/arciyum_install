@@ -1713,9 +1713,6 @@ setup_arx_node() {
                 --bls-keypair-path "$bls_keypair_path" \
                 --node-offset $node_offset \
                 --ip-address $public_ip \
-                --operator-location "0" \
-                --operator-url "https://arcium.com" \
-                --resource-claim "100000" \
                 --rpc-url "$RPC_ENDPOINT" 2>&1)
             init_rc=$?
             
